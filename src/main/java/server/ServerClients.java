@@ -125,6 +125,10 @@ public class ServerClients extends Thread {
                     }
                     vr.send(jsonDesk);
                 }
+                File file = new File("countMoving.json");
+
+                importingSaveState(file);
+
 
             }
             //send to clients message about winning
@@ -142,6 +146,18 @@ public class ServerClients extends Thread {
         }
     }
 
+    public static void importingSaveState(File file) throws IOException {
+        ObjectMapper mapper1 = new ObjectMapper();
+        if (file.exists()) {
+            CountMoving countMoving = mapper1.readValue(file, CountMoving.class);
+            countMoving.setCountMoving(countMoving.getCountMoving() + 1);
+            mapper1.writeValue(file, countMoving);
+        } else {
+            CountMoving countMoving = new CountMoving();
+            countMoving.setCountMoving(1);
+            mapper1.writeValue(file, countMoving);
+        }
+    }
     private void send(String json) {
         try {
             //write json to output stream
