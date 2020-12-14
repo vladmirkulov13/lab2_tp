@@ -1,0 +1,28 @@
+{
+
+  "$schema": "http://json-schema.org/draft-04/schema#",
+
+  "title": "countMoving",
+
+  "description": "A number of moving sent by players",
+
+  "type": "object",
+
+  "properties":
+
+  {
+
+    "countMoving": {
+
+      "description": "Counting moving",
+
+      "type": "integer"
+
+    }
+  },
+
+  "required": ["countMoving"],
+
+  "additionalProperties":false
+
+}
